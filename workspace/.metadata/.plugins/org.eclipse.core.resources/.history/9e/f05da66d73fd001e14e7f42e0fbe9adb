@@ -1,0 +1,7 @@
+package com.dailycodebuffer.demo.services.external.clients.decoders;
+
+import feign.codec.ErrorDecoder;
+
+public class OrderErrorDecoder implements ErrorDecoder{
+
+}

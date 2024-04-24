@@ -1,0 +1,18 @@
+server:
+ port:8083
+
+spring:
+ application:
+  name: PaymentService
+ config:
+  import: configserver:http://localhost:9296
+
+
+
+#eureka:
+# instance:
+#  prefer-ip-address: true
+# client:
+#  register-with-eureka: true
+#  fetch-registry: true  
+#  service-url: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}

@@ -1,0 +1,5 @@
+package com.dailycodebuffer.demo.enums;
+
+public enum PaymentMode {
+
+}

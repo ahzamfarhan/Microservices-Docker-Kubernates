@@ -1,0 +1,14 @@
+package com.dailycodebuffer.demo;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.dailycodebuffer.demo.services.external.clients.decoders.OrderErrorDecoder;
+
+import feign.codec.ErrorDecoder;
+
+@Configuration
+public class FeignConfig {
+	
+	
+}

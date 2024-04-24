@@ -1,0 +1,79 @@
+package com.dailycodebuffer.demo.services;
+
+import org.springframework.stereotype.Service;
+
+import com.dailycodebuffer.demo.entities.Product;
+import com.dailycodebuffer.demo.exceptions.ProductServiceCustomException;
+import com.dailycodebuffer.demo.models.ProductRequest;
+import com.dailycodebuffer.demo.models.ProductResponse;
+import com.dailycodebuffer.demo.repositories.ProductRepository;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
+
+@AllArgsConstructor
+@Log4j2
+@Service
+public class ProductServiceImpl implements ProductService {
+	
+	
+	
+	private ProductRepository productRepository;
+	
+	@Override
+	public long addProduct(ProductRequest productRequest) {
+		
+		log.info("Adding product");
+		
+		Product product = Product.builder()
+								 .price(productRequest.getPrice())
+								 .productName(productRequest.getName())
+								 .quantity(productRequest.getQuantity())
+								 .build();
+		
+		productRepository.save(product);
+		
+		log.info("Product is created.");
+		
+		return product.getProductId();
+	}
+
+	@Override
+	public ProductResponse getProductById(long id) {
+		
+		log.info("product by id.");
+	
+		return productRepository.findById(id)
+				.map(product->{
+					
+					return ProductResponse.builder()
+									.productId(product.getProductId())
+									.price(product.getPrice())
+									.productName(product.getProductName())
+									.build();
+				}).orElseThrow(()-> new ProductServiceCustomException("Product by id not found", "100"));
+	}
+
+	@Override
+	public void reduceQuantity(long productId, long quantity) {
+
+		log.info("product by id {} for quantity {}.", productId, quantity);
+		
+		Product product = productRepository.findById(productId)
+		.orElseThrow(()-> new ProductServiceCustomException("Product by id not found", "NOT FOUND"));
+		
+		
+		if(product.getQuantity() < quantity) {
+			throw new ProductServiceCustomException("Product quantity is less than requried", "INSUFFICENT QUANTITY");
+		}
+		
+		product.setQuantity(product.getQuantity() - quantity);
+		
+		productRepository.save(product);
+		
+		
+		log.info("Product quantity has been updated successfully");
+	}
+
+}

@@ -1,0 +1,38 @@
+server:
+ port: 9090
+
+spring:
+ application:
+  name: SpringCloudGateway
+ config:
+  import: configserver:http://localhost:9296
+ cloud:
+  gateway:
+   mvc:
+    routes:
+    - id: ORDERSERVICE
+      uri: lb://ORDERSERVICE
+      predicates: 
+       - Path=/orders/**
+	- id: ORDERSERVICE
+      uri: lb://PRODUCTSERVICE
+      predicates: 
+       - Path=/orders/**
+
+#eureka:
+# instance:
+#  instance:
+#    prefer-ip-address: true
+# client:
+#  register-with-eureka: true
+#  client:
+#    fetch-registry: true 
+
+
+management:
+ tracing:
+  sampling:
+   probability: 1.0
+  
+  
+  

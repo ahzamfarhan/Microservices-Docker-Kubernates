@@ -1,0 +1,19 @@
+package com.dailycodebuffer.demo.controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FallbackController {
+
+	
+	@GetMapping("/orderServiceFallBack")
+	public String orderServiceFallbackHandler() {
+		return "Order Service is down";
+	}
+	
+	@GetMapping("/orderServiceFallBack")
+	public String producterviceFallbackHandler() {
+		return "Product Service is down";
+	}
+}

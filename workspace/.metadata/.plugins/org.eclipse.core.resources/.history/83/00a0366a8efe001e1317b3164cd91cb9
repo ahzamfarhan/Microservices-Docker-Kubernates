@@ -1,0 +1,5 @@
+package com.dailycodebuffer.demo.services.external.clients;
+
+public interface PaymentServiceClient {
+
+}

@@ -1,0 +1,5 @@
+package com.dailycodebuffer.demo.entities;
+
+public class Order {
+
+}

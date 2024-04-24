@@ -1,0 +1,5 @@
+package com.dailycodebuffer.demo.services.external.clients.decoders;
+
+public class OrderErrorDecoder {
+
+}

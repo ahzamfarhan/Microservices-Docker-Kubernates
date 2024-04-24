@@ -1,0 +1,19 @@
+
+Create Product
+
+	URL: http://localhost:8080/product
+	METHOD: POST
+	
+	JSON Request Date.
+		
+	{
+	    "name": "IPhone",
+	    "price": 80000,
+	    "quantity": 1
+	}
+	
+	Response Data 
+	 1
+	 HTTP STATUC CODE 201
+	 
+	 

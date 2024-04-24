@@ -1,0 +1,23 @@
+server:
+ port: 8080
+
+spring:
+ application:
+  name:  ProductService
+ datasource:
+  url: jdbc:mysql://${DB_HOST:localhost}:3306/productdb
+  username: root 
+  password: root
+  driverClassName: com.mysql.cj.jdbc.Driver
+ jpa:
+  hibernate:
+   ddl-auto: update
+
+#eureka:
+# instance:
+#  prefer-ip-address: true
+# client:
+#  register-with-eureka: true
+#  fetch-registry: true   
+#  service-url:
+#   defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}    

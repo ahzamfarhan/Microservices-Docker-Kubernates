@@ -1,0 +1,8 @@
+package com.dailycodebuffer.demo.services.external.clients;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "PaymentService/payment")
+public interface PaymentServiceClient {
+
+}

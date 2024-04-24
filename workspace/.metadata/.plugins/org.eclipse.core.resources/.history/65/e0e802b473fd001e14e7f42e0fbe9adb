@@ -1,0 +1,18 @@
+package com.dailycodebuffer.demo.services.external.clients.decoders;
+
+import feign.Response;
+import feign.codec.ErrorDecoder;
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+public class OrderErrorDecoder implements ErrorDecoder{
+
+	@Override
+	public Exception decode(String methodKey, Response response) {
+
+		log.info("method key: %s%n and Response : %s%n", methodKey, response.status());
+		
+		return null;
+	}
+
+}

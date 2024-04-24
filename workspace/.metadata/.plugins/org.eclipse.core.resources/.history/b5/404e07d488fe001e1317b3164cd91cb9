@@ -1,0 +1,20 @@
+package com.dailycodebuffer.demo.entities;
+
+import java.time.Instant;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="TRANSACTION_DETAILS")
+public class TransactionDetails {
+
+	private long id;
+	private long orderId;
+	private String paymentMode;
+	private String referenceNumber;
+	private Instant paymentDate;
+	private String paymentStatus;
+	private long amount;
+	
+}

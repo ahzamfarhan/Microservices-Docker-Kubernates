@@ -1,0 +1,8 @@
+package com.dailycodebuffer.demo.exceptions;
+
+public class Snippet {
+	public static void main(String[] args) {
+		ProductServiceCustomException
+	}
+}
+

@@ -1,0 +1,13 @@
+package com.dailycodebuffer.demo.services.external.clients.decoders;
+
+import feign.Response;
+import feign.codec.ErrorDecoder;
+
+
+	@Override
+	public Exception decode(String methodKey, Response response) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,26 @@
+package com.dailycodebuffer.demo.service;
+
+import com.dailycodebuffer.demo.entities.TransactionDetails;
+import com.dailycodebuffer.demo.models.PaymentRequest;
+
+public class PaymentService {
+	
+	public long doPayment(PaymentRequest paymentRequest) {
+		
+		
+	}
+	
+	private TransactionDetails convertToEntity(PaymentRequest paymentRequest) {
+		
+		TransactionDetails
+			.builder()
+			.amount(0)
+			.orderId(0)
+			.paymentDate(null)
+			.paymentMode(null)
+			.paymentStatus(null)
+			.referenceNumber(null)
+			.build();
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.dailycodebuffer.demo.service;
+
+import com.dailycodebuffer.demo.models.PaymentRequest;
+
+public class PaymentService {
+	
+	public long doPayment(PaymentRequest paymentRequest) {
+		
+		
+	}
+
+}

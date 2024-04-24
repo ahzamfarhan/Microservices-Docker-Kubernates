@@ -1,0 +1,27 @@
+server:
+ port: 9090
+
+spring:
+ application:
+  name: SpringCloudGateway
+ config:
+  import: configserver:http://localhost:9296
+
+
+#eureka:
+# instance:
+#  instance:
+#    prefer-ip-address: true
+# client:
+#  register-with-eureka: true
+#  client:
+#    fetch-registry: true 
+
+
+management:
+ tracing:
+  sampling:
+   probability: 1.0
+  
+  
+  

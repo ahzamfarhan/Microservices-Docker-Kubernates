@@ -1,0 +1,71 @@
+package com.dailycodebuffer.demo.service;
+
+import java.time.Instant;
+
+import org.springframework.stereotype.Service;
+
+import com.dailycodebuffer.demo.entities.TransactionDetails;
+import com.dailycodebuffer.demo.enums.PaymentMode;
+import com.dailycodebuffer.demo.models.PaymentRequest;
+import com.dailycodebuffer.demo.models.PaymentResponse;
+import com.dailycodebuffer.demo.repositories.TransactionDetailsRepository;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
+@Service
+@AllArgsConstructor
+@Log4j2
+public class PaymentService {
+	
+	private TransactionDetailsRepository transactionDetailsRepository;
+	
+	public long doPayment(PaymentRequest paymentRequest) {
+		
+		log.info("Recording payment details : {}", paymentRequest);
+		
+		TransactionDetails transactionDetails = transactionDetailsRepository.save(convertToEntity(paymentRequest));
+		
+		log.info("Transaction completed with ID {}", transactionDetails.getId());
+		
+		return transactionDetails.getAmount();
+	}
+	
+	
+	public PaymentResponse getPaymentById(long id) {
+		
+		return transactionDetailsRepository.findById(id)
+													.map(this::convertToResponse)
+													.orElseThrow(()-> new RuntimeException("Exception in PaymentResponse"));
+		
+		
+	}
+	
+	
+	private PaymentResponse convertToResponse(TransactionDetails transactionDetails) {
+		
+		return PaymentResponse.builder()
+		.amount(transactionDetails.getAmount())
+		.orderId(transactionDetails.getOrderId())
+		.paymentDate(transactionDetails.getPaymentDate())
+		.paymentId(transactionDetails.getId())
+		.paymentMode(PaymentMode.CREDIT_CARD)
+		.status(transactionDetails.getPaymentStatus())
+		.build();
+		
+	}
+	
+	private TransactionDetails convertToEntity(PaymentRequest paymentRequest) {
+		
+		return TransactionDetails
+			.builder()
+			.amount(paymentRequest.getAmount())
+			.orderId(paymentRequest.getOrderId())
+			.paymentDate(Instant.now())
+			.paymentMode(paymentRequest.getPaymentMode().name())
+			.paymentStatus("SUCCESS")
+			.referenceNumber(paymentRequest.getReferenceNumber())
+			.build();
+	}
+
+}

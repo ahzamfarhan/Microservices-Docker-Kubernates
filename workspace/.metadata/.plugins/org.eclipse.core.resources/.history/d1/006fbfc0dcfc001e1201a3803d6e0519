@@ -1,0 +1,39 @@
+package com.dailycodebuffer.demo.models;
+
+import java.time.Instant;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class OrderDto {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "order_ID")
+	private long id;
+	
+	@Column(name="product_id")
+	private long productId;
+	
+	@Column(name="QUANTITY")
+	private long quantity;
+	
+	@Column(name = "ORDER_DATE")
+	private Instant orderDate;
+	
+	@Column(name ="ORDER_STATUS")
+	private String orderStatus;
+	
+	@Column(name = "AMOUNT")
+	private long amount;
+}

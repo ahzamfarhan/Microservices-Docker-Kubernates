@@ -1,0 +1,10 @@
+package com.dailycodebuffer.demo.exceptions;
+
+public class OrderServiceException extends RuntimeException {
+
+	
+	public OrderServiceException(String message, String statusCode) {
+		super(message);
+		this.statusCode = statusCode;
+	}
+}

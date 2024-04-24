@@ -1,0 +1,25 @@
+package com.dailycodebuffer.demo.services.external.clients.decoders;
+
+
+import com.dailycodebuffer.demo.exceptions.OrderServiceException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import feign.Response;
+import feign.codec.ErrorDecoder;
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+public class OrderErrorDecoder implements ErrorDecoder{
+
+	@Override
+	public Exception decode(String methodKey, Response response) {
+
+		log.info("method key: %s%n Status : %s%n Reason %s%n", methodKey, response.status(), response.reason());
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		ErrorResponse errResponse = objectMapper.readValue(response.body().asInputStream(), ErrorResponse.class)
+		
+		return new OrderServiceException(null, null);
+	}
+
+}

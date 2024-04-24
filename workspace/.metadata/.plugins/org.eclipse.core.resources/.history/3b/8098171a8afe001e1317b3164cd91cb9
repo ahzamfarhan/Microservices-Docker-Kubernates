@@ -1,0 +1,10 @@
+package com.dailycodebuffer.demo.models;
+
+import com.dailycodebuffer.demo.enums.PaymentMode;
+
+public class PaymentRequest {
+	
+	
+	PaymentMode paymentMode;
+
+}
